@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CDR Analysis</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>CDR Analysis Dashboard</h1>
+    <p>Upload a Call Detail Record CSV and get instant analysis.</p>
+  </header>
+
+  <main>
+    <section class="upload-card">
+      <h2>Upload CDR CSV</h2>
+      <input id="fileInput" type="file" accept=".csv" />
+      <button id="sampleButton">Use sample CSV</button>
+      <div class="note">Expected columns: Date, Time, Caller, Receiver, Duration, and either CallType or Location</div>
+    </section>
+
+    <section id="summary" class="summary hidden">
+      <h2>Summary</h2>
+      <div class="summary-grid">
+        <div class="stat"><span id="totalCalls">0</span><small>Total Calls</small></div>
+        <div class="stat"><span id="totalDuration">0</span><small>Total Duration (sec)</small></div>
+        <div class="stat"><span id="uniqueCallers">0</span><small>Unique Callers</small></div>
+        <div class="stat"><span id="uniqueReceivers">0</span><small>Unique Receivers</small></div>
+      </div>
+    </section>
+
+    <section id="charts" class="hidden">
+      <h2>Analysis</h2>
+      <div class="chart-group">
+        <div>
+          <h3>Call Type Counts</h3>
+          <canvas id="callTypeChart"></canvas>
+        </div>
+        <div>
+          <h3>Top Callers</h3>
+          <canvas id="topCallersChart"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
